@@ -5,26 +5,20 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import Posts from "./Posts"
 import AddPost from "../components/AddPost"
 import UserInfo from "../components/UserInfo"
+import { useGlobalContext } from "../context"
 
 
 
 const Home = () => {
-    const [user,isLoading] = useAuthState(auth);
+    const {isLoading} = useGlobalContext();
 
     if(isLoading){
         return <p className='font-semibold text-2xl text-center py-4'>Loading...</p>
     }
-    const handleSignOut = useCallback((e)=>{
-        const confirmSignOut = window.confirm("Are you sure you want to sign out?");
-        if(confirmSignOut){
-            signOut(auth)
-        }
-        e.preventDefault();
-        
-    },[user])
+   
   return (
     <div>
-          <UserInfo user={user} handleSignOut={handleSignOut}/>
+          <UserInfo/>
           <div>
             <AddPost/>
             <Posts/>

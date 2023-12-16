@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 
+
 const ref = collection(db, "posts")
 
 const AddComment = ({ post }) => {
@@ -34,7 +35,8 @@ const AddComment = ({ post }) => {
     if (isLoading) {
         return <p className='font-semibold text-2xl text-center py-4'>Loading...</p>
     }
-    const newData = data.filter((item) => item.post.post == post.post)
+    const newData = data.filter((item) => item.post.post == post.post);
+    console.log(newData);
     return (
         <div>
             <form onSubmit={handleSubmit} className="flex  items-center">
@@ -51,7 +53,7 @@ const AddComment = ({ post }) => {
                       
                      
                         <p className="font-semibold text-2xl">  {item.comment}</p>
-                        
+                     
                         <p className="text-gray-500 flex gap-x-1">Posted by <h3> {item.author}</h3>on<span>{new Date(item.date.seconds * 1000).toLocaleString()}</span></p>
                     </div>
                 ))

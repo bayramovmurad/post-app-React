@@ -1,4 +1,7 @@
-const UserInfo = ({user,handleSignOut}) => {
+import { useGlobalContext } from "../context"
+
+const UserInfo = () => {
+  const { user, handleSignOut } = useGlobalContext();
   return (
     <div className="py-4">
           <div className="border-2 p-4 border-blue-200 w-[400px]  mx-auto ">
